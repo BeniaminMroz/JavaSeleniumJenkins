@@ -1,15 +1,11 @@
-# seleniumdemo
-# H1
-## H2
-### H3
+# JavaSeleniumJenkins
+# Java 1.8
 **bold text**
 
 *italicized text*
 
-- First item
-- Second item
-- Third item
-
+- Basic UI tests
+- run on Jenikns
 
 `System.out.println("Hello World")`
 
