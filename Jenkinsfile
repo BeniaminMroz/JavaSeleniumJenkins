@@ -2,13 +2,24 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Git checkout') {
             steps {
-                // To run Maven on a Windows agent, use
-                echo "Hello master"
-                 bat "mvn clean test"
+                git 'https://github.com/BeniaminMroz/JavaSeleniumJenkins'
             }
+        }
 
+        stage('Run tests') {
+            steps {
+                //sh 'mvn clean test'
+                bat 'mvn clean test'
+            }
+        }
+
+        stage('Publish report') {
+            steps {
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/surefire-reports', reportFiles: 'emailable-report.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+            }
         }
     }
+
 }
